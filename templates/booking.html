@@ -9,7 +9,7 @@
 <body class="booking-page">
 
 <div class="top-nav">
-    <img src="/static/logo.jpg" class="nav-logo-left" onclick="location.href='/'">
+    <div></div> 
     <div class="lang-switcher-right">
         <img src="https://flagcdn.com/w80/tr.png" class="lang-btn" onclick="changeLang('tr')">
         <img src="https://flagcdn.com/w80/gb.png" class="lang-btn" onclick="changeLang('en')">
@@ -30,17 +30,17 @@
         
         <div id="vito" class="car-select-box" onclick="selectCar('Mercedes Vito', 'vito')">
             <img src="/static/vito.jpg">
-            <div class="car-name"><b>Mercedes Vito</b><br><small>8 Kişilik</small></div>
+            <div class="car-name"><b>Mercedes Vito</b><br><small>5 pax</small></div>
         </div>
 
         <div id="maybach" class="car-select-box" onclick="selectCar('Mercedes Maybach', 'maybach')">
             <img src="/static/maybach.jpg">
-            <div class="car-name"><b>Mercedes Maybach</b><br><small>4 Kişilik</small></div>
+            <div class="car-name"><b>Mercedes Maybach</b><br><small>5 pax</small></div>
         </div>
 
         <div id="sprinter" class="car-select-box" onclick="selectCar('Mercedes Sprinter', 'sprinter')">
             <img src="/static/sprinter.jpg">
-            <div class="car-name"><b>VIP Sprinter</b><br><small>16 Kişilik</small></div>
+            <div class="car-name"><b>Mercedes Sprinter</b><br><small>16 pax</small></div>
         </div>
 
         <button class="btn-send" onclick="sendWhatsApp()">
@@ -51,29 +51,64 @@
 
 <script>
     let currentCar = "";
+    let currentLang = "tr"; 
+
+    // Hem arayüz hem de WhatsApp mesajı için dil verileri
     const t_data = {
-        tr: { title: "VIP REZERVASYON", from: "Nereden?", to: "Nereye?", name: "Ad Soyad", count: "Yolcu Sayısı", car: "Araç Seçimi", btn: "REZERVASYON YAP" },
-        en: { title: "VIP BOOKING", from: "From?", to: "To?", name: "Full Name", count: "Passengers", car: "Select Vehicle", btn: "BOOK NOW" },
-        ru: { title: "VIP БРОНИРОВАНИЕ", from: "Откуда?", to: "Куда?", name: "Имя Фамилия", count: "Людей", car: "Выбор Авто", btn: "ЗАБРОНИРОВАТЬ" }
+        tr: { 
+            title: "VIP REZERVASYON", from: "Nereden?", to: "Nereye?", name: "Ad Soyad", count: "Yolcu Sayısı", car: "Araç Seçimi", btn: "REZERVASYON YAP",
+            ws_head: "*ELITE SERVICE REZERVASYON*", ws_name: "İsim", ws_person: "Kişi", ws_car: "Araç", ws_from: "Nereden", ws_to: "Nereye"
+        },
+        en: { 
+            title: "VIP BOOKING", from: "From?", to: "To?", name: "Full Name", count: "Passengers", car: "Select Vehicle", btn: "BOOK NOW",
+            ws_head: "*ELITE SERVICE BOOKING*", ws_name: "Name", ws_person: "Person", ws_car: "Vehicle", ws_from: "From", ws_to: "To"
+        },
+        ru: { 
+            title: "VIP БРОНИРОВАНИЕ", from: "Откуда?", to: "Куда?", name: "Имя Фамилия", count: "Людей", car: "Выбор Авто", btn: "ЗАБРОНИРОВАТЬ",
+            ws_head: "*ELITE SERVICE БРОНИРОВАНИЕ*", ws_name: "Имя", ws_person: "Человек", ws_car: "Автомобиль", ws_from: "Откуда", ws_to: "Куда"
+        }
     };
+
     function changeLang(l) {
-        document.getElementById('form-title').innerText = t_data[l].title;
-        document.getElementById('from').placeholder = t_data[l].from;
-        document.getElementById('to').placeholder = t_data[l].to;
-        document.getElementById('userName').placeholder = t_data[l].name;
-        document.getElementById('userCount').placeholder = t_data[l].count;
-        document.getElementById('car-lbl').innerText = t_data[l].car;
-        document.getElementById('btn-text').innerText = t_data[l].btn;
+        currentLang = l;
+        const d = t_data[l];
+        document.getElementById('form-title').innerText = d.title;
+        document.getElementById('from').placeholder = d.from;
+        document.getElementById('to').placeholder = d.to;
+        document.getElementById('userName').placeholder = d.name;
+        document.getElementById('userCount').placeholder = d.count;
+        document.getElementById('car-lbl').innerText = d.car;
+        document.getElementById('btn-text').innerText = d.btn;
     }
+
     function selectCar(n, id) {
         currentCar = n;
         document.querySelectorAll('.car-select-box').forEach(b => b.classList.remove('selected-car'));
         document.getElementById(id).classList.add('selected-car');
     }
+
     function sendWhatsApp() {
         const name = document.getElementById('userName').value;
-        if(!name || !currentCar) { alert("Lütfen isim ve araç seçiniz!"); return; }
-        window.open(`https://wa.me/905382116191?text=Rezervasyon: ${name}, Araç: ${currentCar}`, '_blank');
+        const count = document.getElementById('userCount').value;
+        const from = document.getElementById('from').value;
+        const to = document.getElementById('to').value;
+        const d = t_data[currentLang];
+
+        if(!name || !currentCar) { 
+            alert(currentLang === 'tr' ? "Lütfen isim ve araç seçiniz!" : (currentLang === 'ru' ? "Пожалуйста, выберите имя и автомобиль!" : "Please select name and vehicle!")); 
+            return; 
+        }
+
+        // TAM İSTEDİĞİN FORMAT: Emojili ve dile duyarlı
+        const message = `${d.ws_head}\n\n` +
+                        `👤 *${d.ws_name}:* ${name}\n` +
+                        `👥 *${d.ws_person}:* ${count}\n` +
+                        `🚘 *${d.ws_car}:* ${currentCar}\n` +
+                        `📍 *${d.ws_from}:* ${from}\n` +
+                        `🏁 *${d.ws_to}:* ${to}`;
+
+        const finalUrl = `https://wa.me/905382116191?text=${encodeURIComponent(message)}`;
+        window.open(finalUrl, '_blank');
     }
 </script>
 </body>
