@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>ELITE SERVICE | VIP Transfer</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<div class="top-nav">
+    <div></div> 
+    <div class="lang-switcher-right">
+        <img src="https://flagcdn.com/w80/tr.png" class="lang-btn" onclick="updateLang('tr')">
+        <img src="https://flagcdn.com/w80/gb.png" class="lang-btn" onclick="updateLang('en')">
+        <img src="https://flagcdn.com/w80/ru.png" class="lang-btn" onclick="updateLang('ru')">
+    </div>
+</div>
+
+<div class="hero">
+    <div class="content-wrapper">
+        <img src="/static/logo.jpg" class="hero-center-logo" alt="Elite Service">
+        
+        <h1 id="hero-title" class="brand-title">ELITE SERVICE</h1>
+        <p id="hero-subtitle" class="hero-desc">Antalya'nın En Prestijli VIP Transfer Deneyimi</p>
+        
+        <div class="feature-badges">
+            <span id="feat-1">✦ Ultra Lüks</span>
+            <span id="feat-2">✦ 7/24 Profesyonel</span>
+            <span id="feat-3">✦ VIP Karşılama</span>
+        </div>
+
+        <div class="button-container">
+            <a href="/booking" id="btn-booking" class="btn-premium">Hemen Rezervasyon Yap</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    const translations = {
+        tr: { title: "ELITE SERVICE", subtitle: "Antalya'nın En Prestijli VIP Transfer Deneyimi", feat1: "✦ Ultra Lüks", feat2: "✦ 7/24 Profesyonel", feat3: "✦ VIP Karşılama", btn: "Hemen Rezervasyon Yap" },
+        en: { title: "ELITE SERVICE", subtitle: "Antalya's Most Prestigious VIP Experience", feat1: "✦ Ultra Luxury", feat2: "✦ 24/7 Professional", feat3: "✦ VIP Welcome", btn: "Book Now" },
+        ru: { title: "ELITE SERVICE", subtitle: "Престижный VIP-трансфер в Анталии", feat1: "✦ Ультра Люкс", feat2: "✦ 24/7 Сервис", feat3: "✦ VIP Встреча", btn: "Забронировать" }
+    };
+    function updateLang(lang) {
+        const t = translations[lang];
+        document.getElementById('hero-title').innerText = t.title;
+        document.getElementById('hero-subtitle').innerText = t.subtitle;
+        document.getElementById('feat-1').innerText = t.feat1;
+        document.getElementById('feat-2').innerText = t.feat2;
+        document.getElementById('feat-3').innerText = t.feat3;
+        document.getElementById('btn-booking').innerText = t.btn;
+    }
+</script>
+</body>
+</html>
