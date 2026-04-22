@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking | Elite Service</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="booking-page">
+
+<div class="top-nav">
+    <img src="/static/logo.jpg" class="nav-logo-left" onclick="location.href='/'">
+    <div class="lang-switcher-right">
+        <img src="https://flagcdn.com/w80/tr.png" class="lang-btn" onclick="changeLang('tr')">
+        <img src="https://flagcdn.com/w80/gb.png" class="lang-btn" onclick="changeLang('en')">
+        <img src="https://flagcdn.com/w80/ru.png" class="lang-btn" onclick="changeLang('ru')">
+    </div>
+</div>
+
+<div class="form-wrapper">
+    <div class="booking-card-new">
+        <h2 id="form-title" class="gold-text">VIP REZERVASYON</h2>
+        
+        <input id="from" placeholder="Nereden?">
+        <input id="to" placeholder="Nereye?">
+        <input id="userName" placeholder="Ad Soyad">
+        <input id="userCount" type="number" placeholder="Yolcu Sayısı">
+
+        <p id="car-lbl" class="label-gold">Araç Seçimi</p>
+        
+        <div id="vito" class="car-select-box" onclick="selectCar('Mercedes Vito', 'vito')">
+            <img src="/static/vito.jpg">
+            <div class="car-name"><b>Mercedes Vito</b><br><small>8 Kişilik</small></div>
+        </div>
+
+        <div id="maybach" class="car-select-box" onclick="selectCar('Mercedes Maybach', 'maybach')">
+            <img src="/static/maybach.jpg">
+            <div class="car-name"><b>Mercedes Maybach</b><br><small>4 Kişilik</small></div>
+        </div>
+
+        <div id="sprinter" class="car-select-box" onclick="selectCar('Mercedes Sprinter', 'sprinter')">
+            <img src="/static/sprinter.jpg">
+            <div class="car-name"><b>VIP Sprinter</b><br><small>16 Kişilik</small></div>
+        </div>
+
+        <button class="btn-send" onclick="sendWhatsApp()">
+            <span id="btn-text">REZERVASYON YAP</span>
+        </button>
+    </div>
+</div>
+
+<script>
+    let currentCar = "";
+    const t_data = {
+        tr: { title: "VIP REZERVASYON", from: "Nereden?", to: "Nereye?", name: "Ad Soyad", count: "Yolcu Sayısı", car: "Araç Seçimi", btn: "REZERVASYON YAP" },
+        en: { title: "VIP BOOKING", from: "From?", to: "To?", name: "Full Name", count: "Passengers", car: "Select Vehicle", btn: "BOOK NOW" },
+        ru: { title: "VIP БРОНИРОВАНИЕ", from: "Откуда?", to: "Куда?", name: "Имя Фамилия", count: "Людей", car: "Выбор Авто", btn: "ЗАБРОНИРОВАТЬ" }
+    };
+    function changeLang(l) {
+        document.getElementById('form-title').innerText = t_data[l].title;
+        document.getElementById('from').placeholder = t_data[l].from;
+        document.getElementById('to').placeholder = t_data[l].to;
+        document.getElementById('userName').placeholder = t_data[l].name;
+        document.getElementById('userCount').placeholder = t_data[l].count;
+        document.getElementById('car-lbl').innerText = t_data[l].car;
+        document.getElementById('btn-text').innerText = t_data[l].btn;
+    }
+    function selectCar(n, id) {
+        currentCar = n;
+        document.querySelectorAll('.car-select-box').forEach(b => b.classList.remove('selected-car'));
+        document.getElementById(id).classList.add('selected-car');
+    }
+    function sendWhatsApp() {
+        const name = document.getElementById('userName').value;
+        if(!name || !currentCar) { alert("Lütfen isim ve araç seçiniz!"); return; }
+        window.open(`https://wa.me/905382116191?text=Rezervasyon: ${name}, Araç: ${currentCar}`, '_blank');
+    }
+</script>
+</body>
+</html>

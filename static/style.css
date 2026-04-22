@@ -1,0 +1,48 @@
+:root { --gold: #d4af37; --bg: #050505; }
+body { margin:0; padding:0; background: var(--bg); color:white; font-family: 'Poppins', sans-serif; }
+
+/* Üst Navigasyon */
+.top-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 40px 60px; /* 40px'i küçültürsen Booking sayfasındaki logo sola kayar */
+    position: absolute; width: 100%; box-sizing: border-box; z-index: 100;
+}
+
+/* REZERVASYONDAKİ LOGO BOYUTU (9. Satır Civarı) */
+.nav-logo-left { 
+    height: 150px; /* Burayı değiştirirsen Booking sayfasındaki logo büyür */
+    border-radius: 8px; 
+    filter: drop-shadow(0 0 5px rgba(212,175,55,0.3)); 
+}
+
+.lang-switcher-right { display: flex; gap: 10px; }
+.lang-btn { width: 32px; height: 32px; border-radius: 50% !important; cursor: pointer; object-fit: cover; }
+
+/* Giriş Ekranı */
+.hero { height: 100vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #1a1a1a 0%, #000 100%); }
+.content-wrapper { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 800px; }
+
+/* GİRİŞTEKİ ORTA LOGO BOYUTU */
+.hero-center-logo {
+    height: 200px; /* Girişteki logonun devliği buradan ayarlanır */
+    width: auto;
+    margin-bottom: 25px;
+    border-radius: 15px;
+}
+
+.brand-title { font-size: 4rem; color: var(--gold); letter-spacing: 6px; margin: 0; }
+.hero-desc { font-size: 1.3rem; color: #ccc; margin: 15px 0 40px 0; }
+
+.feature-badges { display: flex; justify-content: center; gap: 30px; margin-bottom: 50px; color: var(--gold); font-weight: bold; }
+.btn-premium { text-decoration: none; color: #000; background: var(--gold); padding: 20px 50px; border-radius: 50px; font-weight: bold; font-size: 1.2rem; transition: 0.3s; }
+.btn-premium:hover { background: #fff; transform: scale(1.05); }
+
+/* Rezervasyon Kartı */
+.form-wrapper { padding-top: 120px; display: flex; justify-content: center; }
+.booking-card-new { background: #111; padding: 30px; border-radius: 20px; border: 1px solid #222; width: 400px; }
+.gold-text { color: var(--gold); text-align: center; margin-bottom: 30px; }
+input { width: 100%; padding: 14px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #333; background: #000; color: white; box-sizing: border-box; }
+.car-select-box { display: flex; align-items: center; background: #1a1a1a; padding: 12px; border-radius: 12px; margin-bottom: 12px; cursor: pointer; border: 2px solid transparent; }
+.selected-car { border-color: var(--gold); background: rgba(212,175,55,0.1); }
+.car-select-box img { width: 80px; height: 50px; object-fit: contain; margin-right: 15px; background: white; border-radius: 5px; }
+.btn-send { width: 100%; padding: 16px; background: #25D366; color: white; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; }
