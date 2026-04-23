@@ -9,55 +9,101 @@
 </head>
 <body>
     <div class="contact-bar">
-    <div class="contact-info">
-        <a href="tel:+905393759777"><i class="fas fa-phone-alt"></i> +90 539 375 97 77</a>
-        <a href="mailto:info@eliteservice.com"><i class="fas fa-envelope"></i> info@eliteservice.com</a>
-    </div>
-</div>
-
-<div class="top-nav">
-    <div></div> 
-    <div class="lang-switcher-right">
-        <img src="https://flagcdn.com/w80/tr.png" class="lang-btn" onclick="updateLang('tr')">
-        <img src="https://flagcdn.com/w80/gb.png" class="lang-btn" onclick="updateLang('en')">
-        <img src="https://flagcdn.com/w80/ru.png" class="lang-btn" onclick="updateLang('ru')">
-    </div>
-</div>
-
-<div class="hero">
-    <div class="content-wrapper">
-        <img src="/static/logo.jpg" class="hero-center-logo" alt="Elite Service">
-        
-        <h1 id="hero-title" class="brand-title">ELITE SERVICE</h1>
-        <p id="hero-subtitle" class="hero-desc">Antalya'nın En Prestijli VIP Transfer Deneyimi</p>
-        
-        <div class="feature-badges">
-            <span id="feat-1">✦ Ultra Lüks</span>
-            <span id="feat-2">✦ 7/24 Profesyonel</span>
-            <span id="feat-3">✦ VIP Karşılama</span>
-        </div>
-
-        <div class="button-container">
-            <a href="/booking" id="btn-booking" class="btn-premium">Hemen Rezervasyon Yap</a>
+        <div class="contact-info">
+            <a href="tel:+905393759777"><i class="fas fa-phone-alt"></i> +90 539 375 97 77</a>
+            <a href="mailto:info@eliteservice.com"><i class="fas fa-envelope"></i> info@eliteservice.com</a>
         </div>
     </div>
-</div>
 
-<script>
-    const translations = {
-        tr: { title: "ELITE SERVICE", subtitle: "Antalya'nın En Prestijli VIP Transfer Deneyimi", feat1: "✦ Ultra Lüks", feat2: "✦ 7/24 Profesyonel", feat3: "✦ VIP Karşılama", btn: "Hemen Rezervasyon Yap" },
-        en: { title: "ELITE SERVICE", subtitle: "Antalya's Most Prestigious VIP Experience", feat1: "✦ Ultra Luxury", feat2: "✦ 24/7 Professional", feat3: "✦ VIP Welcome", btn: "Book Now" },
-        ru: { title: "ELITE SERVICE", subtitle: "Престижный VIP-трансфер в Анталии", feat1: "✦ Ультра Люкс", feat2: "✦ 24/7 Сервис", feat3: "✦ VIP Встреча", btn: "Забронировать" }
-    };
-    function updateLang(lang) {
-        const t = translations[lang];
-        document.getElementById('hero-title').innerText = t.title;
-        document.getElementById('hero-subtitle').innerText = t.subtitle;
-        document.getElementById('feat-1').innerText = t.feat1;
-        document.getElementById('feat-2').innerText = t.feat2;
-        document.getElementById('feat-3').innerText = t.feat3;
-        document.getElementById('btn-booking').innerText = t.btn;
-    }
-</script>
+    <div class="top-nav">
+        <div></div>
+        <div class="lang-switcher-right">
+            <img src="https://flagcdn.com/w80/tr.png" class="lang-btn" onclick="updateLang('tr')">
+            <img src="https://flagcdn.com/w80/gb.png" class="lang-btn" onclick="updateLang('en')">
+            <img src="https://flagcdn.com/w80/ru.png" class="lang-btn" onclick="updateLang('ru')">
+        </div>
+    </div>
+
+    <section class="hero-elite">
+        <div class="hero-bg-image"></div>
+        <div class="hero-overlay-dark"></div>
+        
+        <div class="hero-container-elite">
+            <div class="hero-content-left">
+                <span id="hero-pre" class="hero-pre-title">ANTALYA'NIN EN PRESTİJLİ</span>
+                <h1 id="hero-title" class="hero-title-main">VIP TRANSFER <br> <span>DENEYİMİ</span></h1>
+                <p id="hero-subtitle" class="hero-text-desc">
+                    Konfor, güvenlik ve prestiji bir arada sunuyoruz. <br>
+                    Sizin için her detayı mükemmelleştiriyoruz.
+                </p>
+                
+                <div class="hero-features-list">
+                    <div class="feature-item-elite">
+                        <i class="fas fa-gem"></i>
+                        <span id="feat-1">Ultra Lüks Araçlar</span>
+                    </div>
+                    <div class="feature-item-elite">
+                        <i class="fas fa-user-shield"></i>
+                        <span id="feat-2">7/24 Profesyonel Hizmet</span>
+                    </div>
+                    <div class="feature-item-elite">
+                        <i class="fas fa-crown"></i>
+                        <span id="feat-3">VIP Karşılama</span>
+                    </div>
+                </div>
+
+                <div class="hero-btn-action">
+                    <a href="/booking" id="btn-booking" class="btn-luxe">HEMEN REZERVASYON YAP →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-footer-wrapper">
+            <div class="hero-final-signature">ELITE SERVICE VIP TRANSFER</div>
+        </div>
+    </section>
+
+    <script>
+        const translations = {
+            tr: {
+                pre: "ANTALYA'NIN EN PRESTİJLİ",
+                title: "VIP TRANSFER <br> <span>DENEYİMİ</span>",
+                subtitle: "Konfor, güvenlik ve prestiji bir arada sunuyoruz. Sizin için her detayı mükemmelleştiriyoruz.",
+                feat1: "Ultra Lüks Araçlar",
+                feat2: "7/24 Profesyonel Hizmet",
+                feat3: "VIP Karşılama",
+                btn: "HEMEN REZERVASYON YAP →"
+            },
+            en: {
+                pre: "ANTALYA'S MOST PRESTIGIOUS",
+                title: "VIP TRANSFER <br> <span>EXPERIENCE</span>",
+                subtitle: "We offer comfort, security and prestige together. We perfect every detail for you.",
+                feat1: "Ultra Luxury Vehicles",
+                feat2: "24/7 Professional Service",
+                feat3: "VIP Welcome",
+                btn: "BOOK NOW →"
+            },
+            ru: {
+                pre: "ПРЕСТИЖНЫЙ В АНТАЛИИ",
+                title: "VIP ТРАНСФЕР <br> <span>ОПЫТ</span>",
+                subtitle: "Мы предлагаем комфорт, безопасность и престиж. Мы доводим каждую деталь до совершенства.",
+                feat1: "Ультра Люкс Авто",
+                feat2: "24/7 Профессионально",
+                feat3: "VIP Встреча",
+                btn: "ЗАБРОНИРОВАТЬ →"
+            }
+        };
+
+        function updateLang(lang) {
+            const t = translations[lang];
+            document.getElementById('hero-pre').innerText = t.pre;
+            document.getElementById('hero-title').innerHTML = t.title;
+            document.getElementById('hero-subtitle').innerText = t.subtitle;
+            document.getElementById('feat-1').innerText = t.feat1;
+            document.getElementById('feat-2').innerText = t.feat2;
+            document.getElementById('feat-3').innerText = t.feat3;
+            document.getElementById('btn-booking').innerText = t.btn;
+        }
+    </script>
 </body>
 </html>
