@@ -4,9 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking | Elite Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body class="booking-page">
+    <div class="contact-bar">
+        <div class="contact-info">
+            <a href="tel:+905393759777"><i class="fas fa-phone-alt"></i> +90 539 375 97 77</a>
+            <a href="mailto:info@eliteservice.com"><i class="fas fa-envelope"></i> info@eliteservice.com</a>
+        </div>
+    </div>
 
 <div class="top-nav">
     <div></div> 
@@ -23,6 +30,12 @@
         
         <input id="from" placeholder="Nereden?">
         <input id="to" placeholder="Nereye?">
+        
+        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+            <input id="date" type="date" style="flex: 1;">
+            <input id="time" type="time" style="flex: 1;">
+        </div>
+
         <input id="userName" placeholder="Ad Soyad">
         <input id="userCount" type="number" placeholder="Yolcu Sayısı">
 
@@ -53,19 +66,18 @@
     let currentCar = "";
     let currentLang = "tr"; 
 
-    // Hem arayüz hem de WhatsApp mesajı için dil verileri
     const t_data = {
         tr: { 
             title: "VIP REZERVASYON", from: "Nereden?", to: "Nereye?", name: "Ad Soyad", count: "Yolcu Sayısı", car: "Araç Seçimi", btn: "REZERVASYON YAP",
-            ws_head: "*ELITE SERVICE REZERVASYON*", ws_name: "İsim", ws_person: "Kişi", ws_car: "Araç", ws_from: "Nereden", ws_to: "Nereye"
+            ws_head: "*ELITE SERVICE REZERVASYON*", ws_name: "👤 İsim", ws_person: "👥 Kişi", ws_car: "🚘 Araç", ws_from: "📍 Nereden", ws_to: "🏁 Nereye", ws_date: "📅 Tarih", ws_time: "⏰ Saat"
         },
         en: { 
             title: "VIP BOOKING", from: "From?", to: "To?", name: "Full Name", count: "Passengers", car: "Select Vehicle", btn: "BOOK NOW",
-            ws_head: "*ELITE SERVICE BOOKING*", ws_name: "Name", ws_person: "Person", ws_car: "Vehicle", ws_from: "From", ws_to: "To"
+            ws_head: "*ELITE SERVICE BOOKING*", ws_name: "👤 Name", ws_person: "👥 Person", ws_car: "🚘 Vehicle", ws_from: "📍 From", ws_to: "🏁 To", ws_date: "📅 Date", ws_time: "⏰ Time"
         },
         ru: { 
             title: "VIP БРОНИРОВАНИЕ", from: "Откуда?", to: "Куда?", name: "Имя Фамилия", count: "Людей", car: "Выбор Авто", btn: "ЗАБРОНИРОВАТЬ",
-            ws_head: "*ELITE SERVICE БРОНИРОВАНИЕ*", ws_name: "Имя", ws_person: "Человек", ws_car: "Автомобиль", ws_from: "Откуда", ws_to: "Куда"
+            ws_head: "*ELITE SERVICE БРОНИРОВАНИЕ*", ws_name: "👤 Имя", ws_person: "👥 Человек", ws_car: "🚘 Автомобиль", ws_from: "📍 Откуда", ws_to: "🏁 Куda", ws_date: "📅 Дата", ws_time: "⏰ Время"
         }
     };
 
@@ -92,24 +104,31 @@
         const count = document.getElementById('userCount').value;
         const from = document.getElementById('from').value;
         const to = document.getElementById('to').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
         const d = t_data[currentLang];
 
-        if(!name || !currentCar) { 
-            alert(currentLang === 'tr' ? "Lütfen isim ve araç seçiniz!" : (currentLang === 'ru' ? "Пожалуйста, выберите имя и автомобиль!" : "Please select name and vehicle!")); 
+        if(!name || !currentCar || !date || !time) { 
+            alert(currentLang === 'tr' ? "Lütfen tüm alanları doldurun ve araç seçiniz!" : (currentLang === 'ru' ? "Пожалуйста, заполните все поля и выберите автомобиль!" : "Please fill all fields and select vehicle!")); 
             return; 
         }
 
-        // TAM İSTEDİĞİN FORMAT: Emojili ve dile duyarlı
-        const message = `${d.ws_head}\n\n` +
-                        `👤 *${d.ws_name}:* ${name}\n` +
-                        `👥 *${d.ws_person}:* ${count}\n` +
-                        `🚘 *${d.ws_car}:* ${currentCar}\n` +
-                        `📍 *${d.ws_from}:* ${from}\n` +
-                        `🏁 *${d.ws_to}:* ${to}`;
+        // Mesaj Formatı (İkonlar t_data'dan geliyor)
+        // İkonları doğrudan buraya ekledik (Daha garanti yol)
+const message = `${d.ws_head}\n\n` +
+                `*${d.ws_name}:* ${name}\n` +
+                `*${d.ws_person}:* ${count}\n` +
+                `*${d.ws_date}:* ${date}\n` + // Buradaki d.ws_date, yukarıdaki ws_date'e bakıyor
+                `*${d.ws_time}:* ${time}\n` +
+                `*${d.ws_car}:* ${currentCar}\n` +
+                `*${d.ws_from}:* ${from}\n` +
+                `*${d.ws_to}:* ${to}`;
 
         const finalUrl = `https://wa.me/905382116191?text=${encodeURIComponent(message)}`;
         window.open(finalUrl, '_blank');
     }
+
+        
 </script>
 </body>
 </html>
