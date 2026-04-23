@@ -187,3 +187,36 @@ input { width: 100%; padding: 14px; margin-bottom: 15px; border-radius: 10px; bo
     font-size: 0.8rem;
     opacity: 0.8;
 }
+/* --- TAKVİM VE SAAT DÜZELTME --- */
+input[type="date"], 
+input[type="time"] {
+    position: relative;
+    appearance: none; /* Bazı tarayıcıların varsayılanını temizler */
+    -webkit-appearance: none;
+    min-height: 50px;
+}
+
+/* Takvim ve Saat İkonlarını Görünür Yapma */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* İkonu beyaz/altın yapar ki siyah arka planda görünsün */
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Tıklandığında takvimin açılmasını garanti et */
+input[type="date"]:focus, 
+input[type="time"]:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+/* Mobil cihazlarda düzgün takvim açılması için */
+@media (max-width: 768px) {
+    input[type="date"], 
+    input[type="time"] {
+        display: block;
+        width: 100%;
+    }
+}
