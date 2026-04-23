@@ -8,8 +8,21 @@ body { margin:0; padding:0; background: var(--bg); color:white; font-family: 'Po
     position: absolute; width: 100%; box-sizing: border-box; z-index: 100;
 }
 
-.lang-switcher-right { display: flex; gap: 10px; }
-.lang-btn { width: 32px; height: 32px; border-radius: 50% !important; cursor: pointer; object-fit: cover; }
+.lang-switcher-right {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px !important; /* Tavandan aşağı iten kısım burası */
+    align-items: center;
+}
+.lang-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50% !important;
+    cursor: pointer;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border: 2px solid rgba(212, 175, 55, 0.2); /* Bayraklara hafif bir altın çerçeve */
+}
 
 body .contact-bar {
     background: rgba(212, 175, 55, 0.95) !important;
@@ -109,4 +122,68 @@ input { width: 100%; padding: 14px; margin-bottom: 15px; border-radius: 10px; bo
     .hero-container-elite { padding: 120px 30px; }
     .hero-title-main { font-size: 2.8rem; }
     .hero-features-list { flex-direction: column; gap: 15px; }
+}
+/* --- BOOKING ARAÇ SEÇİMİ VE HAVALI EFEKT (KESİN ÇÖZÜM) --- */
+.car-select-box {
+    display: flex;
+    align-items: center;
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border: 2px solid transparent;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer !important; /* Tıklama el işaretini geri getirir */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Yumuşak ve havalı geçiş */
+    position: relative;
+    z-index: 5;
+    pointer-events: auto !important; /* Tıklanabilirliği garanti eder */
+}
+
+/* HAVALI EFEKT: Üzerine gelince büyüme ve parlama */
+.car-select-box:hover {
+    transform: translateY(-5px) scale(1.02); /* Hafif yukarı kalkar ve büyür */
+    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); /* Altın rengi gölge parlaması */
+    border-color: var(--gold);
+    background: #222;
+}
+
+/* Seçili Aracın Durumu */
+.selected-car {
+    border-color: var(--gold) !important;
+    background: rgba(212, 175, 55, 0.15) !important;
+    box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.1);
+}
+
+/* Araç Resimlerinin Boyutu (Sabit ve Düzenli) */
+.car-select-box img {
+    width: 100px !important;
+    height: 60px !important;
+    object-fit: contain !important;
+    margin-right: 20px;
+    background: #fff;
+    border-radius: 6px;
+    flex-shrink: 0;
+    pointer-events: none; /* Resme tıklayınca kutunun tıklanmasını engellemesin */
+}
+
+/* Araç Bilgileri */
+.car-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    pointer-events: none;
+}
+
+.car-info span {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.car-info small {
+    color: var(--gold);
+    font-size: 0.8rem;
+    opacity: 0.8;
 }
