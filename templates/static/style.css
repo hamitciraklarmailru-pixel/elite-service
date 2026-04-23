@@ -48,21 +48,20 @@ input { width: 100%; padding: 14px; margin-bottom: 15px; border-radius: 10px; bo
 .btn-send { width: 100%; padding: 16px; background: #25D366; color: white; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; }
 /* Sadece Bu Kısmı En Alta Yapıştır */
 .contact-bar {
-    /* Renk kodunu düzelttik: Canlı Altın Sarısı ve daha az şeffaflık */
-    background: rgba(212, 175, 55, 0.9) !important; 
+    background: rgba(212, 175, 55, 0.95) !important; /* Daha tok bir altın sarısı */
     padding: 10px 60px !important;
     display: flex !important;
     justify-content: flex-start !important;
     
-    /* Sayfayı kaydırınca yukarıda kalması için absolute */
+    /* KESİN ÇÖZÜM: Sayfa ile gelmemesi için absolute */
     position: absolute !important; 
-    
     top: 0 !important;
     left: 0 !important;
+    
     width: 100% !important;
     box-sizing: border-box !important;
-    z-index: 999 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Çok hafif bir alt çizgi şıklık katar */
+    z-index: 10 !important; /* Z-index'i düşürdük ki bayraklar üstte kalsın */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .contact-info a {
