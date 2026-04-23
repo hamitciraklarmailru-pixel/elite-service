@@ -90,41 +90,58 @@ body .contact-bar {
     border-color: var(--gold);
 }
 /* --- YENİ EKLENEN TARİH VE SAAT AYARLARI --- */
+/* --- TARİH VE SAAT AYARLARI (KESİN ÇÖZÜM) --- */
 input[type="date"], input[type="time"] {
     position: relative;
-    appearance: none; /* Mobil varsayılan stili kaldırır */
-    -webkit-appearance: none;
-    min-height: 50px; /* Kutunun kaybolmaması için sabit yükseklik */
+    min-height: 55px !important;
+    background: #000 !important;
+    border: 1px solid var(--gold) !important;
+    color: white !important;
+    font-weight: 600 !important; /* Yazı artık her yerde kalın */
+    font-size: 1rem !important;
+    padding-left: 15px !important;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
-    background: #000 !important; /* Arka planı siyah tut */
-    border: 1px solid #d4af37 !important; /* Altın çerçeve */
-    color: white !important;
-    padding: 12px !important;
+    /* iPhone'da kutunun içini boşaltmasını engellemek için */
+    -webkit-appearance: none; 
+    appearance: none;
 }
 
-/* Mobilde tarih formatının (gg.aa.yyyy) görünmesini zorlamak için */
+/* Mobilde ve PC'de Kutu Boşken gg.aa.yyyy Yazısını Göster */
 input[type="date"]::before, 
 input[type="time"]::before {
-    content: attr(placeholder); /* Placeholder'dan metni al */
-    width: auto;
-    color: rgba(255, 255, 255, 0.3);
+    content: attr(placeholder);
     position: absolute;
-    left: 14px; /* "Nereden/Nereye" kutularıyla aynı hizaya çektik */
-    top: 50%;
-    transform: translateY(-50%);
+    left: 15px;
+    color: rgba(255, 255, 255, 0.5); /* Şık bir gri-beyaz */
+    font-weight: 500;
+    pointer-events: none;
+    z-index: 1;
 }
 
-/* Takvim ve Saat ikonlarını altın rengi yapma */
+/* Kullanıcı değer girdiğinde hayalet yazıyı (gg.aa.yyyy) tamamen yok et */
+input:focus::before, 
+input:valid::before,
+input:not(:placeholder-shown)::before {
+    display: none !important;
+}
+
+/* İkonları Sağ Köşeye Şık Bir Şekilde Yerleştir */
 input::-webkit-calendar-picker-indicator {
-    display: block !important;
     position: absolute;
-    right: 10px;
+    right: 12px;
+    z-index: 5;
+    cursor: pointer;
     filter: invert(72%) sepia(40%) saturate(550%) hue-rotate(1deg) brightness(95%) contrast(89%) !important;
     opacity: 1 !important;
 }
 
-
+/* Chrome ve Safari'deki o ince/küçük yazı tipini ez */
+input::-webkit-datetime-edit {
+    font-weight: 600 !important;
+    color: #fff !important;
+}
 /* Mobilde kutuların birbirine girmemesi için */
 @media (max-width: 480px) {
     div[style*="display: flex"] {
