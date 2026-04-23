@@ -91,20 +91,39 @@ body .contact-bar {
 }
 /* --- YENİ EKLENEN TARİH VE SAAT AYARLARI --- */
 input[type="date"], input[type="time"] {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid #d4af37 !important; /* Altın rengi çerçeve */
+    position: relative;
+    appearance: none; /* Mobil varsayılan stili kaldırır */
+    -webkit-appearance: none;
+    min-height: 50px; /* Kutunun kaybolmaması için sabit yükseklik */
+    display: flex;
+    align-items: center;
+    background: #000 !important; /* Arka planı siyah tut */
+    border: 1px solid #d4af37 !important; /* Altın çerçeve */
     color: white !important;
     padding: 12px !important;
-    border-radius: 8px !important;
-    font-family: inherit !important;
-    outline: none !important;
+}
+
+/* Mobilde tarih formatının (gg.aa.yyyy) görünmesini zorlamak için */
+input[type="date"]::before, 
+input[type="time"]::before {
+    content: attr(placeholder); /* Placeholder'dan metni al */
+    width: auto;
+    color: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    left: 14px; /* "Nereden/Nereye" kutularıyla aynı hizaya çektik */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* Takvim ve Saat ikonlarını altın rengi yapma */
 input::-webkit-calendar-picker-indicator {
+    display: block !important;
+    position: absolute;
+    right: 10px;
     filter: invert(72%) sepia(40%) saturate(550%) hue-rotate(1deg) brightness(95%) contrast(89%) !important;
-    cursor: pointer;
+    opacity: 1 !important;
 }
+
 
 /* Mobilde kutuların birbirine girmemesi için */
 @media (max-width: 480px) {
