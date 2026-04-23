@@ -32,8 +32,8 @@
         <input id="to" placeholder="Nereye?">
         
         <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-            <input id="date" type="date" style="flex: 1;">
-            <input id="time" type="time" style="flex: 1;">
+            <input type="text" id="date" placeholder="gg.aa.yyyy" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+            <input type="text" id="time" placeholder="--:--" onfocus="(this.type='time')" onblur="if(!this.value)this.type='text'">
         </div>
 
         <input id="userName" placeholder="Ad Soyad">
