@@ -1,71 +1,31 @@
 :root { --gold: #d4af37; --bg: #050505; }
-body { margin:0; padding:0; background: var(--bg); color:white; font-family: 'Poppins', sans-serif; }
+body { margin:0; padding:0; background: var(--bg); color:white; font-family: 'Poppins', sans-serif; overflow-x: hidden; }
 
-/* Üst Navigasyon */
+/* Üst Navigasyon ve İletişim Barı */
 .top-nav {
     display: flex; justify-content: space-between; align-items: center;
-    padding: 40px 60px; /* 40px'i küçültürsen Booking sayfasındaki logo sola kayar */
+    padding: 40px 60px;
     position: absolute; width: 100%; box-sizing: border-box; z-index: 100;
-}
-
-/* REZERVASYONDAKİ LOGO BOYUTU (9. Satır Civarı) */
-.nav-logo-left { 
-    height: 150px; /* Burayı değiştirirsen Booking sayfasındaki logo büyür */
-    border-radius: 8px; 
-    filter: drop-shadow(0 0 5px rgba(212,175,55,0.3)); 
 }
 
 .lang-switcher-right { display: flex; gap: 10px; }
 .lang-btn { width: 32px; height: 32px; border-radius: 50% !important; cursor: pointer; object-fit: cover; }
 
-/* Giriş Ekranı */
-.hero { height: 100vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(circle, #1a1a1a 0%, #000 100%); }
-.content-wrapper { display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 800px; }
-
-/* GİRİŞTEKİ ORTA LOGO BOYUTU */
-.hero-center-logo {
-    height: 200px; /* Girişteki logonun devliği buradan ayarlanır */
-    width: auto;
-    margin-bottom: 25px;
-    border-radius: 15px;
-}
-
-.brand-title { font-size: 4rem; color: var(--gold); letter-spacing: 6px; margin: 0; }
-.hero-desc { font-size: 1.3rem; color: #ccc; margin: 15px 0 40px 0; }
-
-.feature-badges { display: flex; justify-content: center; gap: 30px; margin-bottom: 50px; color: var(--gold); font-weight: bold; }
-.btn-premium { text-decoration: none; color: #000; background: var(--gold); padding: 20px 50px; border-radius: 50px; font-weight: bold; font-size: 1.2rem; transition: 0.3s; }
-.btn-premium:hover { background: #fff; transform: scale(1.05); }
-
-/* Rezervasyon Kartı */
-.form-wrapper { padding-top: 120px; display: flex; justify-content: center; }
-.booking-card-new { background: #111; padding: 30px; border-radius: 20px; border: 1px solid #222; width: 400px; }
-.gold-text { color: var(--gold); text-align: center; margin-bottom: 30px; }
-input { width: 100%; padding: 14px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #333; background: #000; color: white; box-sizing: border-box; }
-.car-select-box { display: flex; align-items: center; background: #1a1a1a; padding: 12px; border-radius: 12px; margin-bottom: 12px; cursor: pointer; border: 2px solid transparent; }
-.selected-car { border-color: var(--gold); background: rgba(212,175,55,0.1); }
-.car-select-box img { width: 80px; height: 50px; object-fit: contain; margin-right: 15px; background: white; border-radius: 5px; }
-.btn-send { width: 100%; padding: 16px; background: #25D366; color: white; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; }
-/* Sadece Bu Kısmı En Alta Yapıştır */
 body .contact-bar {
-    background: rgba(212, 175, 55, 0.95) !important; /* Daha tok bir altın sarısı */
+    background: rgba(212, 175, 55, 0.95) !important;
     padding: 10px 60px !important;
     display: flex !important;
     justify-content: flex-start !important;
-    
-    /* KESİN ÇÖZÜM: Sayfa ile gelmemesi için absolute */
     position: absolute !important; 
     top: 0 !important;
     left: 0 !important;
-    
     width: 100% !important;
     box-sizing: border-box !important;
-    z-index: 10 !important; /* Z-index'i düşürdük ki bayraklar üstte kalsın */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 10 !important;
 }
 
 .contact-info a {
-    color: #ffffff !important; /* Kesin beyaz yazı */
+    color: #ffffff !important;
     text-decoration: none !important;
     margin-right: 25px !important;
     font-size: 0.9rem !important;
@@ -73,87 +33,80 @@ body .contact-bar {
     display: inline-block !important;
 }
 
-/* Sayfa içeriğinin barın altında kalmaması için */
-.top-nav {
-    top: 50px !important; 
-}
-.hero, .form-wrapper {
-    padding-top: 60px !important;
-}
-.car-select-box {
-    transition: all 0.4s ease; /* Yumuşak geçiş */
-}
-
-.car-select-box:hover {
-    transform: translateY(-5px); /* Hafif yukarı kalkma */
-    box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2); /* Altın rengi gölge */
-    border-color: var(--gold);
-}
-/* --- YENİ EKLENEN TARİH VE SAAT AYARLARI --- */
-/* --- TARİH VE SAAT AYARLARI (KESİN ÇÖZÜM) --- */
-input[type="date"], input[type="time"], input[type="text"] {
+/* --- HERO SECTION --- */
+.hero-elite {
+    height: 100vh;
+    width: 100%;
     position: relative;
-    min-height: 55px !important;
-    background: #000 !important;
-    border: 1px solid var(--gold) !important;
-    color: white !important; /* BURADA NOKTALI VİRGÜL EKSİKTİ, DÜZELTTİK */
-    font-weight: 600 !important; 
-    font-size: 1rem !important;
-    padding-left: 15px !important;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    -webkit-appearance: none !important; 
-    appearance: none !important;
+    overflow: hidden;
+    margin-top: 50px; 
 }
 
-/* Mobilde ve PC'de Kutu Boşken gg.aa.yyyy Yazısını Göster */
-input[type="date"]::before, 
-input[type="time"]::before {
-    content: attr(placeholder);
+.hero-bg-image {
     position: absolute;
-    left: 15px;
-    color: rgba(255, 255, 255, 0.5); /* Şık bir gri-beyaz */
-    font-weight: 500;
-    pointer-events: none;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: url('/static/hero-bg.png') no-repeat center center/cover;
     z-index: 1;
 }
 
-/* Kullanıcı değer girdiğinde hayalet yazıyı (gg.aa.yyyy) tamamen yok et */
-input:focus::before, 
-input:valid::before,
-input:not(:placeholder-shown)::before {
-    display: none !important;
-}
-
-/* İkonları Sağ Köşeye Şık Bir Şekilde Yerleştir */
-input::-webkit-calendar-picker-indicator {
+.hero-overlay-dark {
     position: absolute;
-    right: 12px;
-    z-index: 5;
-    cursor: pointer;
-    filter: invert(72%) sepia(40%) saturate(550%) hue-rotate(1deg) brightness(95%) contrast(89%) !important;
-    opacity: 1 !important;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.85) 100%);
+    z-index: 2;
 }
 
-/* Chrome ve Safari'deki o ince/küçük yazı tipini ez */
-input::-webkit-datetime-edit {
-    font-weight: 600 !important;
-    color: #fff !important;
-}
-/* Mobilde kutuların birbirine girmemesi için */
-@media (max-width: 480px) {
-    div[style*="display: flex"] {
-        flex-direction: column !important;
-    }
-}
-.booking-page {
-    overflow-y: auto !important;
-    height: auto !important;
-    min-height: 100vh;
+.hero-container-elite {
+    position: relative;
+    z-index: 10;
+    height: 100%;
+    padding: 100px 80px; /* Yazıları yukarıda tutar, aracın önünü açar */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.form-wrapper {
-    padding-top: 150px !important; /* Üst barın altında kalmaması için */
-    padding-bottom: 50px !important; /* En altta boşluk kalması için */
+.hero-content-left {
+    text-align: left;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.hero-pre-title { color: var(--gold); font-size: 1rem; letter-spacing: 3px; font-weight: 600; }
+.hero-title-main { font-size: 4rem; font-weight: 700; line-height: 1.1; color: #fff; margin: 15px 0; }
+.hero-title-main span { color: var(--gold); }
+.hero-text-desc { font-size: 1.1rem; color: #ccc; line-height: 1.6; margin-bottom: 30px; }
+
+.hero-features-list { display: flex; gap: 30px; margin-bottom: 40px; }
+.feature-item-elite { display: flex; align-items: center; gap: 10px; }
+.feature-item-elite i { color: var(--gold); font-size: 1.4rem; }
+.feature-item-elite span { font-size: 0.85rem; color: #fff; font-weight: 500; }
+
+.btn-luxe {
+    background: linear-gradient(45deg, #d4af37, #f2d06b);
+    color: #000; padding: 18px 35px; border-radius: 5px; font-weight: 700;
+    text-decoration: none; transition: 0.3s; box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+    font-size: 1.1rem;
+}
+.btn-luxe:hover { transform: translateY(-3px); }
+
+/* En Alt İmza Alanı */
+.hero-footer-wrapper {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    z-index: 20; width: 100%; text-align: center;
+}
+
+.hero-final-signature { color: var(--gold); font-size: 0.75rem; letter-spacing: 6px; opacity: 0.6; text-transform: uppercase; }
+
+/* Booking Sayfası */
+.form-wrapper { padding: 150px 0 50px 0; display: flex; justify-content: center; min-height: 100vh; }
+.booking-card-new { background: #111; padding: 30px; border-radius: 20px; border: 1px solid #222; width: 400px; }
+input { width: 100%; padding: 14px; margin-bottom: 15px; border-radius: 10px; border: 1px solid var(--gold); background: #000; color: white; font-weight: 600; }
+.btn-send { width: 100%; padding: 16px; background: #25D366; color: white; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; }
+
+/* Mobil Ayarlar */
+@media (max-width: 768px) {
+    .hero-container-elite { padding: 120px 30px; }
+    .hero-title-main { font-size: 2.8rem; }
+    .hero-features-list { flex-direction: column; gap: 15px; }
 }
