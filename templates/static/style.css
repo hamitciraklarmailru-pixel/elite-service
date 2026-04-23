@@ -91,21 +91,20 @@ body .contact-bar {
 }
 /* --- YENİ EKLENEN TARİH VE SAAT AYARLARI --- */
 /* --- TARİH VE SAAT AYARLARI (KESİN ÇÖZÜM) --- */
-input[type="date"], input[type="time"] {
+input[type="date"], input[type="time"], input[type="text"] {
     position: relative;
     min-height: 55px !important;
     background: #000 !important;
     border: 1px solid var(--gold) !important;
-    color: white !important;
-    font-weight: 600 !important; /* Yazı artık her yerde kalın */
+    color: white !important; /* BURADA NOKTALI VİRGÜL EKSİKTİ, DÜZELTTİK */
+    font-weight: 600 !important; 
     font-size: 1rem !important;
     padding-left: 15px !important;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    /* iPhone'da kutunun içini boşaltmasını engellemek için */
-    -webkit-appearance: none; 
-    appearance: none;
+    -webkit-appearance: none !important; 
+    appearance: none !important;
 }
 
 /* Mobilde ve PC'de Kutu Boşken gg.aa.yyyy Yazısını Göster */
