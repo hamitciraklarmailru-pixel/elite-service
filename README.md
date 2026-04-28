@@ -14,4 +14,4 @@ Antalya merkezli lüks transfer firmaları için geliştirilmiş, modern ve kull
 - **FontAwesome** (Premium Icons)
 - **Python/Flask** (Backend Infrastructure)
 
-*Geliştiren: [Hamit Çıraklar](https://elite-service.onrender.com/)*
+*Geliştiren: [Hamit Çıraklar(https://elite-service.onrender.com/)*]
